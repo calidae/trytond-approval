@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<tree string="Approval Request">
+    <field name="document"/>
+    <field name="version"/>
+    <field name="request_date" widget="date"/>
+    <field name="request_date" widget="time"/>
+    <field name="group"/>
+    <field name="state"/>
+    <field name="user"/>
+    <field name="decision_date" widget="date"/>
+    <field name="decision_date" widget="time"/>
+    <button name="approve" string="Approve" tree_invisible="1"/>
+    <button name="reject" string="Reject" tree_invisible="1"/>
+    <button name="cancel" string="Cancel" tree_invisible="1"/>
+</tree>

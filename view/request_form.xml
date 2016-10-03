@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<form string="Approval Request">
+    <label name="document"/>
+    <field name="document"/>
+    <label name="version"/>
+    <field name="version"/>
+    <label name="group"/>
+    <field name="group"/>
+    <label name="request_date"/>
+    <field name="request_date"/>
+    <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <group id="state" col="6" colspan="4">
+        <label name="state"/>
+        <field name="state"/>
+        <label name="user"/>
+        <field name="user"/>
+        <label name="decision_date"/>
+        <field name="decision_date"/>
+    </group>
+    <group id="buttons" col="3" colspan="4">
+        <button name="approve" string="Approve" confirm="Are you sure you want to approve this request?"/>
+        <button name="reject" string="Reject" confirm="Are you sure you want to reject this request?"/>
+        <button name="cancel" string="Cancel" confirm="Are you sure you want to cancel this request?"/>
+    </group>
+</form>
