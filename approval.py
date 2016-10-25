@@ -59,7 +59,7 @@ class Request(Workflow, ModelSQL, ModelView):
     version = fields.Integer('Version', readonly=True, states={
             'invisible': ~Bool(Eval('version')),
             })
-    group = fields.Many2One('approval.group', 'Group', required=True,
+    group = fields.Many2One('approval.group', 'Group',
         domain=[
             ['OR',
                 ('model', '=', None),
@@ -103,6 +103,14 @@ class Request(Workflow, ModelSQL, ModelView):
                 'cancel': {
                     'invisible': Eval('state') != 'pending',
                     },
+                })
+        cls._error_messages.update({
+                'forbidden_user': ('The user "%(user)s" cannot approve/reject '
+                    'the approval request "%(request)s" because he isn\'t the '
+                    'user of the request.'),
+                'user_not_in_group': ('The user "%(user)s" cannot '
+                    'approve/reject the approval request "%(request)s" because'
+                    ' he isn\'t in the request\'s Group.'),
                 })
 
     @staticmethod
@@ -148,6 +156,7 @@ class Request(Workflow, ModelSQL, ModelView):
         User = Pool().get('res.user')
         user = User(Transaction().user)
         for request in requests:
+            request._check_allowed_user(user)
             request.user = user
             request.decision_date = datetime.now()
         cls.save(requests)
@@ -159,9 +168,24 @@ class Request(Workflow, ModelSQL, ModelView):
         User = Pool().get('res.user')
         user = User(Transaction().user)
         for request in requests:
+            request._check_allowed_user(user)
             request.user = user
             request.decision_date = datetime.now()
         cls.save(requests)
+
+    def _check_allowed_user(self, user):
+        if self.user:
+            if self.user != user:
+                self.raise_user_error('forbidden_user', {
+                        'user': user.rec_name,
+                        'request': self.rec_name,
+                        })
+        elif self.group:
+            if user not in self.group.users:
+                self.raise_user_error('user_not_in_group', {
+                        'user': user.rec_name,
+                        'request': self.rec_name,
+                        })
 
     @classmethod
     @ModelView.button
