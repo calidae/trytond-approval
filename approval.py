@@ -111,6 +111,9 @@ class Request(Workflow, ModelSQL, ModelView):
                 'user_not_in_group': ('The user "%(user)s" cannot '
                     'approve/reject the approval request "%(request)s" because'
                     ' he isn\'t in the request\'s Group.'),
+                'delete_approved_rejected_request': (
+                    'You cannot delete the approval request "%s" because it '
+                    'isn\'t pending or cancelled.'),
                 })
 
     @staticmethod
@@ -192,3 +195,11 @@ class Request(Workflow, ModelSQL, ModelView):
     @Workflow.transition('cancelled')
     def cancel(cls, requests):
         pass
+
+    @classmethod
+    def delete(cls, requests):
+        for request in requests:
+            if request.state not in ('pending', 'cancelled'):
+                cls.raise_user_error('delete_approved_rejected_request',
+                    (request.rec_name,))
+        super(Request, cls).delete(requests)
