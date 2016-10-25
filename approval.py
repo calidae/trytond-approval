@@ -91,6 +91,7 @@ class Request(Workflow, ModelSQL, ModelView):
                 ('pending', 'approved'),
                 ('pending', 'rejected'),
                 ('pending', 'cancelled'),
+                ('approved', 'cancelled'),
                 ))
         cls._buttons.update({
                 'approve': {
