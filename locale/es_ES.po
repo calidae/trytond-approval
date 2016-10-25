@@ -2,6 +2,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:approval.request:"
+msgid ""
+"The user \"%(user)s\" cannot approve/reject the approval request "
+"\"%(request)s\" because he isn't in the request's Group."
+msgstr ""
+"El usuario \"%(user)s\" no puede aprobar/rechazar la petición de aprobación "
+"\"%(request)s\" porque no pertenece al grupo de aprobación."
+
+msgctxt "error:approval.request:"
+msgid ""
+"The user \"%(user)s\" cannot approve/reject the approval request "
+"\"%(request)s\" because he isn't the user of the request."
+msgstr ""
+"El usuario \"%(user)s\" no puede aprobar/rechazar la petición de aprobación "
+"\"%(request)s\" porque no es el usuario de la petición."
+
+msgctxt "error:approval.request:"
+msgid ""
+"You cannot delete the approval request \"%s\" because it isn't pending or "
+"cancelled."
+msgstr ""
+"No puedes eliminar la petición de aprobación \"%s\" porque no está pendiente"
+" o cancelada."
+
 msgctxt "field:approval.group,create_date:"
 msgid "Create Date"
 msgstr "Fecha creación"
@@ -12,7 +36,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:approval.group,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "Identificador"
 
 msgctxt "field:approval.group,model:"
 msgid "Model"
@@ -56,7 +80,7 @@ msgstr "Grupo"
 
 msgctxt "field:approval.group-res.user,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "Identificador"
 
 msgctxt "field:approval.group-res.user,rec_name:"
 msgid "Name"
@@ -84,7 +108,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:approval.request,decision_date:"
 msgid "Decision Date"
-msgstr "Fecha de decisión"
+msgstr "Fecha decisión"
 
 msgctxt "field:approval.request,description:"
 msgid "Description"
@@ -100,7 +124,7 @@ msgstr "Grupo"
 
 msgctxt "field:approval.request,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "Identificador"
 
 msgctxt "field:approval.request,model:"
 msgid "Model"
@@ -112,7 +136,7 @@ msgstr "Nombre"
 
 msgctxt "field:approval.request,request_date:"
 msgid "Request Date"
-msgstr "Fecha de petición"
+msgstr "Fecha petición"
 
 msgctxt "field:approval.request,state:"
 msgid "State"
@@ -140,7 +164,7 @@ msgstr "Grupo de aprobación"
 
 msgctxt "model:approval.group-res.user,name:"
 msgid "Approval Group - Users"
-msgstr "Grupo de aprobación - Usuarios"
+msgstr "Grupo de aprobación - Usuario"
 
 msgctxt "model:approval.request,name:"
 msgid "Approval Request"
@@ -157,7 +181,7 @@ msgstr "Peticiones de aprobación"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_approval_request_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr "Todos"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_approval_request_domain_pending"
@@ -182,19 +206,19 @@ msgstr "Configuración"
 
 msgctxt "model:res.group,name:group_approval"
 msgid "Approval"
-msgstr "Aprobación"
+msgstr "Aprobaciones"
 
 msgctxt "model:res.group,name:group_approval_admin"
 msgid "Approval Administration"
-msgstr "Administración de aprobación"
+msgstr "Administrar aprobaciones"
 
 msgctxt "selection:approval.request,state:"
 msgid "Approved"
-msgstr "Aprobado"
+msgstr "Aprobada"
 
 msgctxt "selection:approval.request,state:"
 msgid "Cancelled"
-msgstr "Cancelado"
+msgstr "Cancelada"
 
 msgctxt "selection:approval.request,state:"
 msgid "Pending"
@@ -202,7 +226,7 @@ msgstr "Pendiente"
 
 msgctxt "selection:approval.request,state:"
 msgid "Rejected"
-msgstr "Rechazado"
+msgstr "Rechazada"
 
 msgctxt "view:approval.group:"
 msgid "Approval Group"
@@ -218,15 +242,15 @@ msgstr "Aprobar"
 
 msgctxt "view:approval.request:"
 msgid "Are you sure you want to approve this request?"
-msgstr "¿Está seguro que quiere aprobar la petición?"
+msgstr "¿Estás seguro de querer aprobar esta petición?"
 
 msgctxt "view:approval.request:"
 msgid "Are you sure you want to cancel this request?"
-msgstr "¿Está seguro que quiere cancelar la petición?"
+msgstr "¿Estás seguro de querer cancelar esta petición?"
 
 msgctxt "view:approval.request:"
 msgid "Are you sure you want to reject this request?"
-msgstr "¿Está seguro que quiere rechazar la petición?"
+msgstr "¿Estás seguro de querer rechazar esta petición?"
 
 msgctxt "view:approval.request:"
 msgid "Cancel"
