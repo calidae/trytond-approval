@@ -15,16 +15,14 @@ class Group(ModelSQL, ModelView):
             ('id', 'in', Eval('valid_models', [])),
             ], depends=['valid_models'])
     valid_models = fields.Function(fields.Many2Many('ir.model', None, None,
-                'Valid Models'), 'get_valid_models')
+            'Valid Models'),
+        'get_valid_models')
     users = fields.Many2Many('approval.group-res.user', 'group', 'user',
         'Users')
 
     @staticmethod
     def default_valid_models():
-        res = Pool().get('approval.group').get_models_from_request()
-        print "XXX: ", res
-        print "--" * 10
-        return res
+        return Pool().get('approval.group').get_models_from_request()
 
     @classmethod
     def get_valid_models(cls, groups, name):
@@ -62,9 +60,9 @@ class Request(Workflow, ModelSQL, ModelView):
     group = fields.Many2One('approval.group', 'Group', required=True,
         domain=[
             ['OR',
-                [('model', '=', None)],
-                [('model', '=', Eval('model'))],
-                ]], depends=['model'])
+                ('model', '=', None),
+                ('model', '=', Eval('model'))],
+            ], depends=['model'])
     model = fields.Function(fields.Many2One('ir.model', 'Model'),
         'on_change_with_model')
     request_date = fields.DateTime('Request Date', required=True)
@@ -82,7 +80,7 @@ class Request(Workflow, ModelSQL, ModelView):
             }, depends=['state'])
     decision_date = fields.DateTime('Decision Date', states={
             'required': Eval('state').in_(['approved', 'rejected']),
-            })
+            }, depends=['state'])
 
     @classmethod
     def __setup__(cls):
@@ -117,16 +115,28 @@ class Request(Workflow, ModelSQL, ModelView):
                 ])
         return [(m.model, m.name) for m in models]
 
+    @staticmethod
+    def default_model():
+        pool = Pool()
+        Model = pool.get('ir.model')
+        model_name = Transaction().context.get('approval_request_model')
+        if model_name:
+            return Model.search([('model', '=', model_name)], limit=1)[0].id
+
     @fields.depends('document')
     def on_change_with_model(self, name=None):
         Model = Pool().get('ir.model')
         if not self.document:
-            return None
+            return self.default_model()
         model = str(self.document).split(',')[0]
         models = Model.search([('model', '=', model)], limit=1)
         if not models:
             return None
         return models[0].id
+
+    @staticmethod
+    def default_state():
+        return 'pending'
 
     @classmethod
     @ModelView.button
