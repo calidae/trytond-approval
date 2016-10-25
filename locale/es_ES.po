@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:approval.group,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:approval.group,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:approval.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:approval.group,model:"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "field:approval.group,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:approval.group,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:approval.group,users:"
+msgid "Users"
+msgstr "Usuarios"
+
+msgctxt "field:approval.group,valid_models:"
+msgid "Valid Models"
+msgstr "Modelos válidos"
+
+msgctxt "field:approval.group,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:approval.group,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:approval.group-res.user,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:approval.group-res.user,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:approval.group-res.user,group:"
+msgid "Group"
+msgstr "Grupo"
+
+msgctxt "field:approval.group-res.user,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:approval.group-res.user,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:approval.group-res.user,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:approval.group-res.user,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:approval.group-res.user,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:approval.request,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:approval.request,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:approval.request,decision_date:"
+msgid "Decision Date"
+msgstr "Fecha de decisión"
+
+msgctxt "field:approval.request,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:approval.request,document:"
+msgid "Document"
+msgstr "Documento"
+
+msgctxt "field:approval.request,group:"
+msgid "Group"
+msgstr "Grupo"
+
+msgctxt "field:approval.request,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:approval.request,model:"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "field:approval.request,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:approval.request,request_date:"
+msgid "Request Date"
+msgstr "Fecha de petición"
+
+msgctxt "field:approval.request,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:approval.request,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:approval.request,version:"
+msgid "Version"
+msgstr "Versión"
+
+msgctxt "field:approval.request,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:approval.request,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "model:approval.group,name:"
+msgid "Approval Group"
+msgstr "Grupo de aprobación"
+
+msgctxt "model:approval.group-res.user,name:"
+msgid "Approval Group - Users"
+msgstr "Grupo de aprobación - Usuarios"
+
+msgctxt "model:approval.request,name:"
+msgid "Approval Request"
+msgstr "Petición de aprobación"
+
+msgctxt "model:ir.action,name:act_approval_group"
+msgid "Approval Groups"
+msgstr "Grupos de aprobación"
+
+msgctxt "model:ir.action,name:act_approval_request"
+msgid "Approval Requests"
+msgstr "Peticiones de aprobación"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_approval_request_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_approval_request_domain_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt "model:ir.ui.menu,name:menu_approval"
+msgid "Approvals"
+msgstr "Aprobaciones"
+
+msgctxt "model:ir.ui.menu,name:menu_approval_group"
+msgid "Approval Groups"
+msgstr "Grupos de aprobación"
+
+msgctxt "model:ir.ui.menu,name:menu_approval_request"
+msgid "Approval Requests"
+msgstr "Peticiones de aprobación"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:res.group,name:group_approval"
+msgid "Approval"
+msgstr "Aprobación"
+
+msgctxt "model:res.group,name:group_approval_admin"
+msgid "Approval Administration"
+msgstr "Administración de aprobación"
+
+msgctxt "selection:approval.request,state:"
+msgid "Approved"
+msgstr "Aprobado"
+
+msgctxt "selection:approval.request,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:approval.request,state:"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt "selection:approval.request,state:"
+msgid "Rejected"
+msgstr "Rechazado"
+
+msgctxt "view:approval.group:"
+msgid "Approval Group"
+msgstr "Grupo de aprobación"
+
+msgctxt "view:approval.request:"
+msgid "Approval Request"
+msgstr "Petición de aprobación"
+
+msgctxt "view:approval.request:"
+msgid "Approve"
+msgstr "Aprobar"
+
+msgctxt "view:approval.request:"
+msgid "Are you sure you want to approve this request?"
+msgstr "¿Está seguro que quiere aprobar la petición?"
+
+msgctxt "view:approval.request:"
+msgid "Are you sure you want to cancel this request?"
+msgstr "¿Está seguro que quiere cancelar la petición?"
+
+msgctxt "view:approval.request:"
+msgid "Are you sure you want to reject this request?"
+msgstr "¿Está seguro que quiere rechazar la petición?"
+
+msgctxt "view:approval.request:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:approval.request:"
+msgid "Reject"
+msgstr "Rechazar"
