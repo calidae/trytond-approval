@@ -14,6 +14,7 @@
             <field name="user" ref="res.user_trigger"/>
             <field name="group" ref="group_approval_admin"/>
         </record>
+
         <record model="res.group" id="group_approval">
             <field name="name">Approval</field>
         </record>
@@ -25,16 +26,20 @@
             <field name="user" ref="res.user_trigger"/>
             <field name="group" ref="group_approval"/>
         </record>
+
+        <!-- approval.group -->
         <record model="ir.ui.view" id="approval_group_view_form">
             <field name="model">approval.group</field>
             <field name="type">form</field>
             <field name="name">group_form</field>
         </record>
+
         <record model="ir.ui.view" id="approval_group_view_list">
             <field name="model">approval.group</field>
             <field name="type">tree</field>
             <field name="name">group_list</field>
         </record>
+
         <record model="ir.action.act_window" id="act_approval_group">
             <field name="name">Approval Groups</field>
             <field name="res_model">approval.group</field>
@@ -49,6 +54,7 @@
             <field name="view" ref="approval_group_view_form"/>
             <field name="act_window" ref="act_approval_group"/>
         </record>
+
         <record model="ir.model.access" id="access_approval_group">
             <field name="model" search="[('model', '=', 'approval.group')]"/>
             <field name="perm_read" eval="True"/>
@@ -56,6 +62,7 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
+
         <record model="ir.model.access" id="access_approval_group_admin">
             <field name="model" search="[('model', '=', 'approval.group')]"/>
             <field name="group" ref="group_approval_admin"/>
@@ -64,16 +71,20 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <!-- approval.request -->
         <record model="ir.ui.view" id="approval_request_view_form">
             <field name="model">approval.request</field>
             <field name="type">form</field>
             <field name="name">request_form</field>
         </record>
+
         <record model="ir.ui.view" id="approval_request_view_list">
             <field name="model">approval.request</field>
             <field name="type">tree</field>
             <field name="name">request_list</field>
         </record>
+
         <record model="ir.action.act_window" id="act_approval_request">
             <field name="name">Approval Requests</field>
             <field name="res_model">approval.request</field>
@@ -100,6 +111,7 @@
             <field name="domain" eval="" pyson="1"/>
             <field name="act_window" ref="act_approval_request"/>
         </record>
+
         <record model="ir.model.access" id="access_approval_request">
             <field name="model" search="[('model', '=', 'approval.request')]"/>
             <field name="perm_read" eval="True"/>
@@ -107,14 +119,43 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_approval_request_admin">
+
+        <record model="ir.model.access" id="access_approval_request_approval">
             <field name="model" search="[('model', '=', 'approval.request')]"/>
-            <field name="group" ref="group_approval_admin"/>
+            <field name="group" ref="group_approval"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.model.button" id="request_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'approval.request')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="request_cancel_button_group_approval">
+            <field name="button" ref="request_cancel_button"/>
+            <field name="group" ref="group_approval"/>
+        </record>
+
+        <record model="ir.model.button" id="request_approve_button">
+            <field name="name">approve</field>
+            <field name="model" search="[('model', '=', 'approval.request')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="request_approve_button_group_approval">
+            <field name="button" ref="request_approve_button"/>
+            <field name="group" ref="group_approval"/>
+        </record>
+
+        <record model="ir.model.button" id="request_reject_button">
+            <field name="name">reject</field>
+            <field name="model" search="[('model', '=', 'approval.request')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="request_reject_button_group_approval">
+            <field name="button" ref="request_reject_button"/>
+            <field name="group" ref="group_approval"/>
+        </record>
+
         <!-- Menus -->
         <menuitem id="menu_approval" name="Approvals" sequence="1"/>
         <record model="ir.ui.menu-res.group" id="menu_approval_group_approval">
@@ -135,6 +176,5 @@
 
         <menuitem action="act_approval_group" id="menu_approval_group"
             parent="menu_configuration" sequence="1" name="Approval Groups"/>
-
     </data>
 </tryton>
