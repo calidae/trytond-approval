@@ -45,8 +45,10 @@ class Group(ModelSQL, ModelView):
 class GroupUser(ModelSQL):
     'Approval Group - Users'
     __name__ = 'approval.group-res.user'
-    group = fields.Many2One('approval.group', 'Group', required=True)
-    user = fields.Many2One('res.user', 'User', required=True)
+    group = fields.Many2One('approval.group', 'Group', required=True,
+        ondelete='CASCADE')
+    user = fields.Many2One('res.user', 'User', required=True,
+        ondelete='CASCADE')
 
 
 class Request(Workflow, ModelSQL, ModelView):
@@ -75,10 +77,10 @@ class Request(Workflow, ModelSQL, ModelView):
             ('rejected', 'Rejected'),
             ('cancelled', 'Cancelled'),
             ], 'State', required=True)
-    user = fields.Many2One('res.user', 'User', states={
+    user = fields.Many2One('res.user', 'User', readonly=True, states={
             'required': Eval('state').in_(['approved', 'rejected']),
             }, depends=['state'])
-    decision_date = fields.DateTime('Decision Date', states={
+    decision_date = fields.DateTime('Decision Date', readonly=True, states={
             'required': Eval('state').in_(['approved', 'rejected']),
             }, depends=['state'])
 
