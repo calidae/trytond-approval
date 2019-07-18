@@ -3,6 +3,8 @@ from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pyson import Eval, Bool
 from trytond.pool import Pool
 from trytond.transaction import Transaction
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 __all__ = ['Group', 'GroupUser', 'Request']
 
@@ -104,17 +106,6 @@ class Request(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'pending',
                     },
                 })
-        cls._error_messages.update({
-                'forbidden_user': ('The user "%(user)s" cannot approve/reject '
-                    'the approval request "%(request)s" because he isn\'t the '
-                    'user of the request.'),
-                'user_not_in_group': ('The user "%(user)s" cannot '
-                    'approve/reject the approval request "%(request)s" because'
-                    ' he isn\'t in the request\'s Group.'),
-                'delete_approved_rejected_request': (
-                    'You cannot delete the approval request "%s" because it '
-                    'isn\'t pending or cancelled.'),
-                })
 
     @staticmethod
     def _get_document():
@@ -183,16 +174,12 @@ class Request(Workflow, ModelSQL, ModelView):
     def _check_allowed_user(self, user):
         if self.user:
             if self.user != user:
-                self.raise_user_error('forbidden_user', {
-                        'user': user.rec_name,
-                        'request': self.rec_name,
-                        })
+                raise UserError(gettext('approval.forbidden_user',
+                        user=user.rec_name, request=self.rec_name))
         elif self.group:
             if user not in self.group.users:
-                self.raise_user_error('user_not_in_group', {
-                        'user': user.rec_name,
-                        'request': self.rec_name,
-                        })
+                raise UserError(gettext('approval.user_not_in_group',
+                        user=user.rec_name, request=self.rec_name))
 
     @classmethod
     @ModelView.button
@@ -204,6 +191,7 @@ class Request(Workflow, ModelSQL, ModelView):
     def delete(cls, requests):
         for request in requests:
             if request.state not in ('pending', 'cancelled'):
-                cls.raise_user_error('delete_approved_rejected_request',
-                    (request.rec_name,))
+                raise UserError(gettext(
+                        'approval.delete_approved_rejected_request',
+                        request=request.rec_name))
         super(Request, cls).delete(requests)
