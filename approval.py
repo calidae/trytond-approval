@@ -15,7 +15,7 @@ class Group(ModelSQL, ModelView, DeactivableMixin):
     name = fields.Char('Name', required=True)
     model = fields.Many2One('ir.model', 'Model', domain=[
             ('id', 'in', Eval('valid_models', [])),
-            ], depends=['valid_models'])
+            ])
     valid_models = fields.Function(fields.Many2Many('ir.model', None, None,
             'Valid Models'),
         'get_valid_models')
@@ -66,7 +66,7 @@ class Request(Workflow, ModelSQL, ModelView):
             ['OR',
                 ('model', '=', None),
                 ('model', '=', Eval('model'))],
-            ], depends=['model'])
+            ])
     model = fields.Function(fields.Many2One('ir.model', 'Model'),
         'on_change_with_model')
     request_date = fields.DateTime('Request Date', required=True)
@@ -81,10 +81,10 @@ class Request(Workflow, ModelSQL, ModelView):
             ], 'State', required=True, readonly=True)
     user = fields.Many2One('res.user', 'User', readonly=True, states={
             'required': Eval('state').in_(['approved', 'rejected']),
-            }, depends=['state'])
+            })
     decision_date = fields.DateTime('Decision Date', readonly=True, states={
             'required': Eval('state').in_(['approved', 'rejected']),
-            }, depends=['state'])
+            })
 
     @classmethod
     def __setup__(cls):
