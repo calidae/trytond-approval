@@ -48,7 +48,7 @@
         </record>
 
         <record model="ir.model.access" id="access_approval_group">
-            <field name="model" search="[('model', '=', 'approval.group')]"/>
+            <field name="model">approval.group</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -56,7 +56,7 @@
         </record>
 
         <record model="ir.model.access" id="access_approval_group_admin">
-            <field name="model" search="[('model', '=', 'approval.group')]"/>
+            <field name="model">approval.group</field>
             <field name="group" ref="group_approval_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -105,7 +105,7 @@
         </record>
 
         <record model="ir.model.access" id="access_approval_request">
-            <field name="model" search="[('model', '=', 'approval.request')]"/>
+            <field name="model">approval.request</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -113,7 +113,7 @@
         </record>
 
         <record model="ir.model.access" id="access_approval_request_approval">
-            <field name="model" search="[('model', '=', 'approval.request')]"/>
+            <field name="model">approval.request</field>
             <field name="group" ref="group_approval"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -123,7 +123,7 @@
 
         <record model="ir.model.button" id="request_cancel_button">
             <field name="name">cancel</field>
-            <field name="model" search="[('model', '=', 'approval.request')]"/>
+            <field name="model">approval.request</field>
         </record>
         <record model="ir.model.button-res.group" id="request_cancel_button_group_approval">
             <field name="button" ref="request_cancel_button"/>
@@ -132,7 +132,7 @@
 
         <record model="ir.model.button" id="request_approve_button">
             <field name="name">approve</field>
-            <field name="model" search="[('model', '=', 'approval.request')]"/>
+            <field name="model">approval.request</field>
         </record>
         <record model="ir.model.button-res.group" id="request_approve_button_group_approval">
             <field name="button" ref="request_approve_button"/>
@@ -141,7 +141,7 @@
 
         <record model="ir.model.button" id="request_reject_button">
             <field name="name">reject</field>
-            <field name="model" search="[('model', '=', 'approval.request')]"/>
+            <field name="model">approval.request</field>
         </record>
         <record model="ir.model.button-res.group" id="request_reject_button_group_approval">
             <field name="button" ref="request_reject_button"/>
