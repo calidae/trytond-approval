@@ -32,9 +32,9 @@ def get_require_version(name):
     return require
 
 config = ConfigParser()
-config.readfp(open('tryton.cfg'))
+config.read_file(open('tryton.cfg'))
 info = dict(config.items('tryton'))
-for key in ('depends', 'extras_depend', 'xml'):
+for key in ('xml',):
     if key in info:
         info[key] = info[key].strip().splitlines()
 
@@ -44,11 +44,6 @@ major_version = int(major_version)
 minor_version = int(minor_version)
 
 requires = []
-for dep in info.get('depends', []):
-    if not re.match(r'(ir|res)(\W|$)', dep):
-        prefix = MODULE2PREFIX.get(dep, 'trytond')
-        requires.append(get_require_version('%s_%s' % (prefix, dep)))
-requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
@@ -121,7 +116,4 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
-    use_2to3=True,
-    convert_2to3_doctests=[
-        ],
     )
